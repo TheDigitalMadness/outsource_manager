@@ -1,0 +1,283 @@
+2025-08-26 01:14:13,534 [INFO] __main__: Bot started
+2025-08-26 01:14:13,534 [INFO] aiogram.dispatcher: Start polling
+2025-08-26 01:14:13,623 [INFO] aiogram.dispatcher: Run polling for bot @thedigitalmadness_bot id=8461730665 - 'test_digitalmadness'
+2025-08-26 01:14:39,013 [INFO] aiogram.event: Update id=683697475 is handled. Duration 307 ms by bot id=8461730665
+2025-08-26 01:15:30,634 [INFO] aiogram.event: Update id=683697476 is handled. Duration 116 ms by bot id=8461730665
+2025-08-26 01:15:33,759 [INFO] aiogram.event: Update id=683697477 is handled. Duration 125 ms by bot id=8461730665
+2025-08-26 01:15:36,078 [INFO] aiogram.event: Update id=683697478 is not handled. Duration 8 ms by bot id=8461730665
+2025-08-26 01:15:36,078 [ERROR] aiogram.event: Cause exception while process update id=683697478 by bot id=8461730665
+TelegramNetworkError: HTTP Client says - ClientOSError: [Errno 2] Can not write request body for https://api.telegram.org/bot8461730665:AAGvPDNadYIYggDYuOWXB1bno2AcozAg-cE/sendDocument
+Traceback (most recent call last):
+  File "/Users/zaharburov/Desktop/Заказы/AI2BIZ/outsource_manager/.venv/lib/python3.12/site-packages/aiohttp/client_reqrep.py", line 1374, in write_bytes
+    await self._body.write_with_length(writer, content_length)
+  File "/Users/zaharburov/Desktop/Заказы/AI2BIZ/outsource_manager/.venv/lib/python3.12/site-packages/aiohttp/payload.py", line 306, in write_with_length
+    await self.write(writer)
+  File "/Users/zaharburov/Desktop/Заказы/AI2BIZ/outsource_manager/.venv/lib/python3.12/site-packages/aiohttp/multipart.py", line 1053, in write
+    await part.write(writer)
+  File "/Users/zaharburov/Desktop/Заказы/AI2BIZ/outsource_manager/.venv/lib/python3.12/site-packages/aiohttp/payload.py", line 1009, in write
+    await self.write_with_length(writer, None)
+  File "/Users/zaharburov/Desktop/Заказы/AI2BIZ/outsource_manager/.venv/lib/python3.12/site-packages/aiohttp/payload.py", line 1052, in write_with_length
+    chunk = await anext(self._iter)
+            ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/zaharburov/Desktop/Заказы/AI2BIZ/outsource_manager/.venv/lib/python3.12/site-packages/aiogram/types/input_file.py", line 103, in read
+    async with aiofiles.open(self.path, "rb") as f:
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/zaharburov/Desktop/Заказы/AI2BIZ/outsource_manager/.venv/lib/python3.12/site-packages/aiofiles/base.py", line 63, in __aenter__
+    return await self
+           ^^^^^^^^^^
+  File "/Users/zaharburov/Desktop/Заказы/AI2BIZ/outsource_manager/.venv/lib/python3.12/site-packages/aiofiles/base.py", line 59, in __await__
+    self._obj = yield from self._coro.__await__()
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/zaharburov/Desktop/Заказы/AI2BIZ/outsource_manager/.venv/lib/python3.12/site-packages/aiofiles/threadpool/__init__.py", line 92, in _open
+    f = await loop.run_in_executor(executor, cb)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/concurrent/futures/thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/Users/zaharburov/Desktop/Заказы/AI2BIZ/outsource_manager/files/Начало продаж в торговую сеть.pdf'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/zaharburov/Desktop/Заказы/AI2BIZ/outsource_manager/.venv/lib/python3.12/site-packages/aiogram/client/session/aiohttp.py", line 177, in make_request
+    async with session.post(
+               ^^^^^^^^^^^^^
+  File "/Users/zaharburov/Desktop/Заказы/AI2BIZ/outsource_manager/.venv/lib/python3.12/site-packages/aiohttp/client.py", line 1488, in __aenter__
+    self._resp: _RetType = await self._coro
+                           ^^^^^^^^^^^^^^^^
+  File "/Users/zaharburov/Desktop/Заказы/AI2BIZ/outsource_manager/.venv/lib/python3.12/site-packages/aiohttp/client.py", line 770, in _request
+    resp = await handler(req)
+           ^^^^^^^^^^^^^^^^^^
+  File "/Users/zaharburov/Desktop/Заказы/AI2BIZ/outsource_manager/.venv/lib/python3.12/site-packages/aiohttp/client.py", line 748, in _connect_and_send_request
+    await resp.start(conn)
+  File "/Users/zaharburov/Desktop/Заказы/AI2BIZ/outsource_manager/.venv/lib/python3.12/site-packages/aiohttp/client_reqrep.py", line 532, in start
+    message, payload = await protocol.read()  # type: ignore[union-attr]
+                       ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/zaharburov/Desktop/Заказы/AI2BIZ/outsource_manager/.venv/lib/python3.12/site-packages/aiohttp/streams.py", line 672, in read
+    await self._waiter
+aiohttp.client_exceptions.ClientOSError: [Errno 2] Can not write request body for https://api.telegram.org/bot8461730665:AAGvPDNadYIYggDYuOWXB1bno2AcozAg-cE/sendDocument
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/zaharburov/Desktop/Заказы/AI2BIZ/outsource_manager/.venv/lib/python3.12/site-packages/aiogram/dispatcher/dispatcher.py", line 309, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/zaharburov/Desktop/Заказы/AI2BIZ/outsource_manager/.venv/lib/python3.12/site-packages/aiogram/dispatcher/dispatcher.py", line 158, in feed_update
+    response = await self.update.wrap_outer_middleware(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/zaharburov/Desktop/Заказы/AI2BIZ/outsource_manager/.venv/lib/python3.12/site-packages/aiogram/dispatcher/middlewares/error.py", line 25, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/zaharburov/Desktop/Заказы/AI2BIZ/outsource_manager/.venv/lib/python3.12/site-packages/aiogram/dispatcher/middlewares/user_context.py", line 56, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/zaharburov/Desktop/Заказы/AI2BIZ/outsource_manager/.venv/lib/python3.12/site-packages/aiogram/fsm/middleware.py", line 42, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/zaharburov/Desktop/Заказы/AI2BIZ/outsource_manager/.venv/lib/python3.12/site-packages/aiogram/dispatcher/event/telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/zaharburov/Desktop/Заказы/AI2BIZ/outsource_manager/.venv/lib/python3.12/site-packages/aiogram/dispatcher/event/handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "/Users/zaharburov/Desktop/Заказы/AI2BIZ/outsource_manager/.venv/lib/python3.12/site-packages/aiogram/dispatcher/dispatcher.py", line 276, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/zaharburov/Desktop/Заказы/AI2BIZ/outsource_manager/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 146, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/zaharburov/Desktop/Заказы/AI2BIZ/outsource_manager/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 141, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/zaharburov/Desktop/Заказы/AI2BIZ/outsource_manager/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 174, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/zaharburov/Desktop/Заказы/AI2BIZ/outsource_manager/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 146, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/zaharburov/Desktop/Заказы/AI2BIZ/outsource_manager/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 141, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/zaharburov/Desktop/Заказы/AI2BIZ/outsource_manager/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 166, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/zaharburov/Desktop/Заказы/AI2BIZ/outsource_manager/.venv/lib/python3.12/site-packages/aiogram/dispatcher/event/telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/zaharburov/Desktop/Заказы/AI2BIZ/outsource_manager/.venv/lib/python3.12/site-packages/aiogram/dispatcher/event/handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "/Users/zaharburov/Desktop/Заказы/AI2BIZ/outsource_manager/ways/main_menu/what_is_service/router.py", line 24, in send_start_pdf
+    await callback.message.answer_document(FSInputFile(app_cfg.Files.START_SELL_PDF))
+  File "/Users/zaharburov/Desktop/Заказы/AI2BIZ/outsource_manager/.venv/lib/python3.12/site-packages/aiogram/methods/base.py", line 84, in emit
+    return await bot(self)
+           ^^^^^^^^^^^^^^^
+  File "/Users/zaharburov/Desktop/Заказы/AI2BIZ/outsource_manager/.venv/lib/python3.12/site-packages/aiogram/client/bot.py", line 485, in __call__
+    return await self.session(self, method, timeout=request_timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/zaharburov/Desktop/Заказы/AI2BIZ/outsource_manager/.venv/lib/python3.12/site-packages/aiogram/client/session/base.py", line 254, in __call__
+    return cast(TelegramType, await middleware(bot, method))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/zaharburov/Desktop/Заказы/AI2BIZ/outsource_manager/.venv/lib/python3.12/site-packages/aiogram/client/session/aiohttp.py", line 184, in make_request
+    raise TelegramNetworkError(method=method, message=f"{type(e).__name__}: {e}")
+aiogram.exceptions.TelegramNetworkError: HTTP Client says - ClientOSError: [Errno 2] Can not write request body for https://api.telegram.org/bot8461730665:AAGvPDNadYIYggDYuOWXB1bno2AcozAg-cE/sendDocument
+2025-08-26 01:15:53,885 [INFO] aiogram.event: Update id=683697479 is handled. Duration 365 ms by bot id=8461730665
+2025-08-26 01:16:06,241 [INFO] aiogram.event: Update id=683697480 is handled. Duration 158 ms by bot id=8461730665
+2025-08-26 01:16:09,158 [INFO] aiogram.event: Update id=683697481 is handled. Duration 138 ms by bot id=8461730665
+2025-08-26 01:16:10,317 [INFO] aiogram.event: Update id=683697482 is handled. Duration 119 ms by bot id=8461730665
+2025-08-26 01:16:11,405 [INFO] aiogram.event: Update id=683697483 is handled. Duration 133 ms by bot id=8461730665
+2025-08-26 01:16:12,481 [INFO] aiogram.event: Update id=683697484 is handled. Duration 129 ms by bot id=8461730665
+2025-08-26 01:16:13,630 [INFO] aiogram.event: Update id=683697485 is handled. Duration 115 ms by bot id=8461730665
+2025-08-26 01:16:15,793 [INFO] aiogram.event: Update id=683697486 is handled. Duration 204 ms by bot id=8461730665
+2025-08-26 01:16:17,988 [INFO] aiogram.event: Update id=683697487 is handled. Duration 588 ms by bot id=8461730665
+2025-08-26 01:16:56,561 [WARNING] aiogram.dispatcher: Received SIGINT signal
+2025-08-26 01:16:56,562 [INFO] aiogram.dispatcher: Polling stopped for bot @thedigitalmadness_bot id=8461730665 - 'test_digitalmadness'
+2025-08-26 01:16:56,562 [INFO] aiogram.dispatcher: Polling stopped
+2025-08-26 01:16:56,883 [ERROR] asyncio: Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x107d92900>
+2025-08-26 01:16:58,025 [INFO] __main__: Bot started
+2025-08-26 01:16:58,025 [INFO] aiogram.dispatcher: Start polling
+2025-08-26 01:16:58,108 [INFO] aiogram.dispatcher: Run polling for bot @thedigitalmadness_bot id=8461730665 - 'test_digitalmadness'
+2025-08-26 01:17:06,591 [INFO] aiogram.event: Update id=683697488 is handled. Duration 495 ms by bot id=8461730665
+2025-08-26 01:17:08,880 [INFO] aiogram.event: Update id=683697489 is handled. Duration 114 ms by bot id=8461730665
+2025-08-26 01:17:12,236 [INFO] aiogram.event: Update id=683697490 is handled. Duration 125 ms by bot id=8461730665
+2025-08-26 01:17:13,822 [INFO] aiogram.event: Update id=683697491 is handled. Duration 124 ms by bot id=8461730665
+2025-08-26 01:17:14,640 [INFO] aiogram.event: Update id=683697492 is handled. Duration 165 ms by bot id=8461730665
+2025-08-26 01:17:15,437 [INFO] aiogram.event: Update id=683697493 is handled. Duration 160 ms by bot id=8461730665
+2025-08-26 01:17:16,279 [INFO] aiogram.event: Update id=683697494 is handled. Duration 196 ms by bot id=8461730665
+2025-08-26 01:17:17,274 [INFO] aiogram.event: Update id=683697495 is handled. Duration 279 ms by bot id=8461730665
+2025-08-26 01:17:18,235 [INFO] aiogram.event: Update id=683697496 is handled. Duration 145 ms by bot id=8461730665
+2025-08-26 01:17:19,412 [INFO] aiogram.event: Update id=683697497 is handled. Duration 529 ms by bot id=8461730665
+2025-08-26 01:17:31,241 [INFO] aiogram.event: Update id=683697498 is handled. Duration 125 ms by bot id=8461730665
+2025-08-26 01:17:35,004 [INFO] aiogram.event: Update id=683697499 is handled. Duration 192 ms by bot id=8461730665
+2025-08-26 01:17:36,742 [INFO] aiogram.event: Update id=683697500 is handled. Duration 152 ms by bot id=8461730665
+2025-08-26 01:17:40,319 [INFO] aiogram.event: Update id=683697501 is not handled. Duration 7 ms by bot id=8461730665
+2025-08-26 01:17:40,320 [ERROR] aiogram.event: Cause exception while process update id=683697501 by bot id=8461730665
+TelegramNetworkError: HTTP Client says - ClientOSError: [Errno 2] Can not write request body for https://api.telegram.org/bot8461730665:AAGvPDNadYIYggDYuOWXB1bno2AcozAg-cE/sendDocument
+Traceback (most recent call last):
+  File "/Users/zaharburov/Desktop/Заказы/AI2BIZ/outsource_manager/.venv/lib/python3.12/site-packages/aiohttp/client_reqrep.py", line 1374, in write_bytes
+    await self._body.write_with_length(writer, content_length)
+  File "/Users/zaharburov/Desktop/Заказы/AI2BIZ/outsource_manager/.venv/lib/python3.12/site-packages/aiohttp/payload.py", line 306, in write_with_length
+    await self.write(writer)
+  File "/Users/zaharburov/Desktop/Заказы/AI2BIZ/outsource_manager/.venv/lib/python3.12/site-packages/aiohttp/multipart.py", line 1053, in write
+    await part.write(writer)
+  File "/Users/zaharburov/Desktop/Заказы/AI2BIZ/outsource_manager/.venv/lib/python3.12/site-packages/aiohttp/payload.py", line 1009, in write
+    await self.write_with_length(writer, None)
+  File "/Users/zaharburov/Desktop/Заказы/AI2BIZ/outsource_manager/.venv/lib/python3.12/site-packages/aiohttp/payload.py", line 1052, in write_with_length
+    chunk = await anext(self._iter)
+            ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/zaharburov/Desktop/Заказы/AI2BIZ/outsource_manager/.venv/lib/python3.12/site-packages/aiogram/types/input_file.py", line 103, in read
+    async with aiofiles.open(self.path, "rb") as f:
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/zaharburov/Desktop/Заказы/AI2BIZ/outsource_manager/.venv/lib/python3.12/site-packages/aiofiles/base.py", line 63, in __aenter__
+    return await self
+           ^^^^^^^^^^
+  File "/Users/zaharburov/Desktop/Заказы/AI2BIZ/outsource_manager/.venv/lib/python3.12/site-packages/aiofiles/base.py", line 59, in __await__
+    self._obj = yield from self._coro.__await__()
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/zaharburov/Desktop/Заказы/AI2BIZ/outsource_manager/.venv/lib/python3.12/site-packages/aiofiles/threadpool/__init__.py", line 92, in _open
+    f = await loop.run_in_executor(executor, cb)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/concurrent/futures/thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/Users/zaharburov/Desktop/Заказы/AI2BIZ/outsource_manager/files/Кейсы.xlsx'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/zaharburov/Desktop/Заказы/AI2BIZ/outsource_manager/.venv/lib/python3.12/site-packages/aiogram/client/session/aiohttp.py", line 177, in make_request
+    async with session.post(
+               ^^^^^^^^^^^^^
+  File "/Users/zaharburov/Desktop/Заказы/AI2BIZ/outsource_manager/.venv/lib/python3.12/site-packages/aiohttp/client.py", line 1488, in __aenter__
+    self._resp: _RetType = await self._coro
+                           ^^^^^^^^^^^^^^^^
+  File "/Users/zaharburov/Desktop/Заказы/AI2BIZ/outsource_manager/.venv/lib/python3.12/site-packages/aiohttp/client.py", line 770, in _request
+    resp = await handler(req)
+           ^^^^^^^^^^^^^^^^^^
+  File "/Users/zaharburov/Desktop/Заказы/AI2BIZ/outsource_manager/.venv/lib/python3.12/site-packages/aiohttp/client.py", line 748, in _connect_and_send_request
+    await resp.start(conn)
+  File "/Users/zaharburov/Desktop/Заказы/AI2BIZ/outsource_manager/.venv/lib/python3.12/site-packages/aiohttp/client_reqrep.py", line 532, in start
+    message, payload = await protocol.read()  # type: ignore[union-attr]
+                       ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/zaharburov/Desktop/Заказы/AI2BIZ/outsource_manager/.venv/lib/python3.12/site-packages/aiohttp/streams.py", line 672, in read
+    await self._waiter
+aiohttp.client_exceptions.ClientOSError: [Errno 2] Can not write request body for https://api.telegram.org/bot8461730665:AAGvPDNadYIYggDYuOWXB1bno2AcozAg-cE/sendDocument
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/zaharburov/Desktop/Заказы/AI2BIZ/outsource_manager/.venv/lib/python3.12/site-packages/aiogram/dispatcher/dispatcher.py", line 309, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/zaharburov/Desktop/Заказы/AI2BIZ/outsource_manager/.venv/lib/python3.12/site-packages/aiogram/dispatcher/dispatcher.py", line 158, in feed_update
+    response = await self.update.wrap_outer_middleware(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/zaharburov/Desktop/Заказы/AI2BIZ/outsource_manager/.venv/lib/python3.12/site-packages/aiogram/dispatcher/middlewares/error.py", line 25, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/zaharburov/Desktop/Заказы/AI2BIZ/outsource_manager/.venv/lib/python3.12/site-packages/aiogram/dispatcher/middlewares/user_context.py", line 56, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/zaharburov/Desktop/Заказы/AI2BIZ/outsource_manager/.venv/lib/python3.12/site-packages/aiogram/fsm/middleware.py", line 42, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/zaharburov/Desktop/Заказы/AI2BIZ/outsource_manager/.venv/lib/python3.12/site-packages/aiogram/dispatcher/event/telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/zaharburov/Desktop/Заказы/AI2BIZ/outsource_manager/.venv/lib/python3.12/site-packages/aiogram/dispatcher/event/handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "/Users/zaharburov/Desktop/Заказы/AI2BIZ/outsource_manager/.venv/lib/python3.12/site-packages/aiogram/dispatcher/dispatcher.py", line 276, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/zaharburov/Desktop/Заказы/AI2BIZ/outsource_manager/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 146, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/zaharburov/Desktop/Заказы/AI2BIZ/outsource_manager/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 141, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/zaharburov/Desktop/Заказы/AI2BIZ/outsource_manager/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 174, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/zaharburov/Desktop/Заказы/AI2BIZ/outsource_manager/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 146, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/zaharburov/Desktop/Заказы/AI2BIZ/outsource_manager/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 141, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/zaharburov/Desktop/Заказы/AI2BIZ/outsource_manager/.venv/lib/python3.12/site-packages/aiogram/dispatcher/router.py", line 166, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/zaharburov/Desktop/Заказы/AI2BIZ/outsource_manager/.venv/lib/python3.12/site-packages/aiogram/dispatcher/event/telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/zaharburov/Desktop/Заказы/AI2BIZ/outsource_manager/.venv/lib/python3.12/site-packages/aiogram/dispatcher/event/handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "/Users/zaharburov/Desktop/Заказы/AI2BIZ/outsource_manager/ways/main_menu/results/router.py", line 24, in send_all_cases
+    await callback.message.answer_document(FSInputFile(app_cfg.Files.CASES_XLSX))
+  File "/Users/zaharburov/Desktop/Заказы/AI2BIZ/outsource_manager/.venv/lib/python3.12/site-packages/aiogram/methods/base.py", line 84, in emit
+    return await bot(self)
+           ^^^^^^^^^^^^^^^
+  File "/Users/zaharburov/Desktop/Заказы/AI2BIZ/outsource_manager/.venv/lib/python3.12/site-packages/aiogram/client/bot.py", line 485, in __call__
+    return await self.session(self, method, timeout=request_timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/zaharburov/Desktop/Заказы/AI2BIZ/outsource_manager/.venv/lib/python3.12/site-packages/aiogram/client/session/base.py", line 254, in __call__
+    return cast(TelegramType, await middleware(bot, method))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/zaharburov/Desktop/Заказы/AI2BIZ/outsource_manager/.venv/lib/python3.12/site-packages/aiogram/client/session/aiohttp.py", line 184, in make_request
+    raise TelegramNetworkError(method=method, message=f"{type(e).__name__}: {e}")
+aiogram.exceptions.TelegramNetworkError: HTTP Client says - ClientOSError: [Errno 2] Can not write request body for https://api.telegram.org/bot8461730665:AAGvPDNadYIYggDYuOWXB1bno2AcozAg-cE/sendDocument
+2025-08-26 01:17:44,700 [INFO] aiogram.event: Update id=683697502 is handled. Duration 345 ms by bot id=8461730665
+2025-08-26 01:17:46,534 [INFO] aiogram.event: Update id=683697503 is handled. Duration 166 ms by bot id=8461730665
+2025-08-26 01:17:49,078 [INFO] aiogram.event: Update id=683697504 is handled. Duration 176 ms by bot id=8461730665
+2025-08-26 01:17:51,485 [INFO] aiogram.event: Update id=683697505 is handled. Duration 136 ms by bot id=8461730665
+2025-08-26 01:17:59,295 [INFO] aiogram.event: Update id=683697506 is handled. Duration 162 ms by bot id=8461730665
+2025-08-26 01:18:00,352 [INFO] aiogram.event: Update id=683697507 is handled. Duration 198 ms by bot id=8461730665
+2025-08-26 01:18:22,520 [WARNING] aiogram.dispatcher: Received SIGINT signal
+2025-08-26 01:18:22,520 [INFO] aiogram.dispatcher: Polling stopped for bot @thedigitalmadness_bot id=8461730665 - 'test_digitalmadness'
+2025-08-26 01:18:22,520 [INFO] aiogram.dispatcher: Polling stopped
+2025-08-26 01:18:22,839 [ERROR] asyncio: Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x10506d7f0>
