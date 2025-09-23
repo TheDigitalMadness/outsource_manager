@@ -1,0 +1,13 @@
+services:
+  bot:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      TELEGRAM_BOT_TOKEN: 8461730665:AAG1Sr8POmGKWLOYbU9DPrTMY7CgWIYpMqc
+      FILES_DIR: /root/home/outsource_manager/files
+
+    container_name: bot
+    restart: unless-stopped
+    volumes:
+      - .:/app
