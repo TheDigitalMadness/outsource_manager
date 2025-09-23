@@ -23,7 +23,7 @@ BASE_FILES_DIR = os.getenv("FILES_DIR", os.path.abspath("files"))
 @dataclass
 class Files:
     CASES_XLSX: str = os.path.join(BASE_FILES_DIR, "cases.xlsx")
-    PRICES_PDF: str = os.path.join(BASE_FILES_DIR, "prices.pdf")
+    PRICES_PDF: str = os.path.join(BASE_FILES_DIR, "расценки.pdf")
     START_SELL_PDF: str = os.path.join(BASE_FILES_DIR, "sell_starting_in_sellers_network.pdf")
     CASES_PDFS: tuple = (
         os.path.join(BASE_FILES_DIR, "case1.pdf"),
