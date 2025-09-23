@@ -5,6 +5,8 @@ from aiogram.fsm.context import FSMContext
 import ways.main_menu.contacts.config as cfg
 import ways.main_menu.config as main_menu_cfg
 
+import logging
+
 router = Router()
 
 
@@ -16,6 +18,7 @@ async def open_contacts(callback: CallbackQuery, state: FSMContext):
 
 @router.callback_query(cfg.ContactsWay.choose_action, F.data == "back")
 async def go_back(callback: CallbackQuery, state: FSMContext):
+    logging.info(f"Going back from")
     await callback.message.edit_text(
         text=main_menu_cfg.Messages.greeting(callback.from_user.first_name or "друг"),
         reply_markup=main_menu_cfg.Markups.choose_action

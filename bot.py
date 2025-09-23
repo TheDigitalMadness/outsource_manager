@@ -1,13 +1,11 @@
 import asyncio
 import logging
 
-from aiogram import Bot, Dispatcher, F
+from aiogram import Bot, Dispatcher
 from aiogram.client.default import DefaultBotProperties
 from aiogram.enums import ParseMode
 from aiogram.fsm.storage.memory import MemoryStorage
 from aiogram.types import BotCommand
-from aiogram.types import CallbackQuery
-from aiogram.fsm.context import FSMContext
 
 from base_config import config as app_cfg
 from database.database import Database, User
@@ -104,12 +102,6 @@ async def deluser_cmd(message: Message):
     c.execute("UPDATE users SET admin = 0 WHERE tg_id = ?", (target_id,))
     conn.commit(); conn.close()
     await message.answer(f"Удалён из администраторов: {target_id}")
-
-
-@dp.callback_query(F.data == "back")
-async def go_back(callback: CallbackQuery, state: FSMContext):
-    logger.info("=== BACK PRESSED ===", await state.get_state())
-
 
 
 # --- Регистрация всех роутеров ---
