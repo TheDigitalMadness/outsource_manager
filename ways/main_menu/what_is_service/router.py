@@ -21,6 +21,7 @@ async def how_we_work(callback: CallbackQuery, state: FSMContext):
 
 @router.callback_query(cfg.WhatIsServiceWay.choose_action, F.data == "send_start_pdf")
 async def send_start_pdf(callback: CallbackQuery, state: FSMContext):
+    print(app_cfg.Files.START_SELL_PDF)
     await callback.message.answer_document(FSInputFile(app_cfg.Files.START_SELL_PDF))
 
 
