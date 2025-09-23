@@ -1,6 +1,7 @@
 from aiogram import Router, F, Bot
 from aiogram.fsm.context import FSMContext
 from aiogram.types import CallbackQuery, Message
+from aiogram.filters import StateFilter
 
 from datetime import datetime, timezone, timedelta
 
@@ -147,7 +148,7 @@ async def notify_admins(message: Message, state: FSMContext):
 
 # Обработчики кнопок Назад и Контакты в визарде
 @router.callback_query(
-    (
+    StateFilter(
         cfg.AuditWay.choose_action , cfg.AuditWay.q1 , cfg.AuditWay.q2 , cfg.AuditWay.q3 , cfg.AuditWay.q4 , cfg.AuditWay.q5 , cfg.AuditWay.q6 , cfg.AuditWay.q7 , cfg.AuditWay.q8
     ),
     F.data == "back"
@@ -175,7 +176,7 @@ async def wizard_back(callback: CallbackQuery, state: FSMContext):
 
 
 @router.callback_query(
-    (
+    StateFilter(
             cfg.AuditWay.choose_action , cfg.AuditWay.q1 , cfg.AuditWay.q2 , cfg.AuditWay.q3 , cfg.AuditWay.q4 , cfg.AuditWay.q5 , cfg.AuditWay.q6 , cfg.AuditWay.q7 , cfg.AuditWay.q8
     ),
     F.data == "contacts"
