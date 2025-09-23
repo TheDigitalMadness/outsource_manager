@@ -10,11 +10,11 @@ import logging
 router = Router()
 
 
-@router.callback_query(main_menu_cfg.MainMenuWay.choose_action, F.data == "contacts")
+"""@router.callback_query(main_menu_cfg.MainMenuWay.choose_action, F.data == "contacts")
 async def open_contacts(callback: CallbackQuery, state: FSMContext):
     await callback.message.edit_text(cfg.Messages.text, reply_markup=cfg.Markups.choose_action)
     await state.set_state(cfg.ContactsWay.choose_action)
-
+"""
 
 @router.callback_query(cfg.ContactsWay.choose_action, F.data == "back")
 async def go_back(callback: CallbackQuery, state: FSMContext):
