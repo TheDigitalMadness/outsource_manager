@@ -5,7 +5,7 @@ services:
       dockerfile: Dockerfile
     environment:
       TELEGRAM_BOT_TOKEN: 8461730665:AAG1Sr8POmGKWLOYbU9DPrTMY7CgWIYpMqc
-      FILES_DIR: /root/home/outsource_manager/files
+      FILES_DIR: /app/files
 
     container_name: bot
     restart: unless-stopped
