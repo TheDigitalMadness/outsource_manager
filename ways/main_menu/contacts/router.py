@@ -24,3 +24,8 @@ async def go_back(callback: CallbackQuery, state: FSMContext):
         reply_markup=main_menu_cfg.Markups.choose_action
     )
     await state.set_state(main_menu_cfg.MainMenuWay.choose_action)
+
+@router.callback_query(cfg.ContactsWay.choose_action)
+async def choose_contact(callback: CallbackQuery, state: FSMContext):
+    logging.info(f"{callback.data} chosen")
+    logging.info(f"{await state.get_state()} state")
