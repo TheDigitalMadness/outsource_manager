@@ -146,7 +146,12 @@ async def notify_admins(message: Message, state: FSMContext):
 
 
 # Обработчики кнопок Назад и Контакты в визарде
-@router.callback_query(F.data == "back")
+@router.callback_query(
+    (
+        cfg.AuditWay.choose_action | cfg.AuditWay.q1 | cfg.AuditWay.q2 | cfg.AuditWay.q3 | cfg.AuditWay.q4 | cfg.AuditWay.q5 | cfg.AuditWay.q6 | cfg.AuditWay.q7 | cfg.AuditWay.q8
+    ),
+    F.data == "back"
+)
 async def wizard_back(callback: CallbackQuery, state: FSMContext):
     # Определяем текущий шаг
     current = await state.get_state()
@@ -169,7 +174,12 @@ async def wizard_back(callback: CallbackQuery, state: FSMContext):
             await state.set_state(main_menu_cfg.MainMenuWay.choose_action)
 
 
-@router.callback_query(F.data == "contacts")
+@router.callback_query(
+    (
+            cfg.AuditWay.choose_action | cfg.AuditWay.q1 | cfg.AuditWay.q2 | cfg.AuditWay.q3 | cfg.AuditWay.q4 | cfg.AuditWay.q5 | cfg.AuditWay.q6 | cfg.AuditWay.q7 | cfg.AuditWay.q8
+    ),
+    F.data == "contacts"
+)
 async def wizard_contacts(callback: CallbackQuery, state: FSMContext):
     # Сброс визарда и переход в Контакты
     await state.clear()

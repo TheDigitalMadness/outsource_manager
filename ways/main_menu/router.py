@@ -10,6 +10,7 @@ from ways.main_menu.what_is_service import config as service_cfg
 from ways.main_menu.refusal import config as refusal_cfg
 from ways.main_menu.results import config as results_cfg
 from ways.main_menu.prices import config as prices_cfg
+from ways.main_menu.audit import config as audit_cfg
 
 from ways.main_menu.audit import router as audit_router
 
@@ -72,7 +73,7 @@ async def open_prices(callback: CallbackQuery, state: FSMContext):
 @router.callback_query(cfg.MainMenuWay.choose_action, F.data == "audit")
 async def open_audit(callback: CallbackQuery, state: FSMContext):
     await audit_router.start_audit(callback, state)
-
+    await state.set_state(audit_cfg.AuditWay.choose_action)
 
 @router.callback_query(cfg.MainMenuWay.choose_action, F.data == "contacts")
 async def open_contacts(callback: CallbackQuery, state: FSMContext):

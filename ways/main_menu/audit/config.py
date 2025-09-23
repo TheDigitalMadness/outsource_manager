@@ -3,6 +3,7 @@ from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
 
 class AuditWay(StatesGroup):
+    choose_action = State()
     q1 = State() # Название предприятия
     q2 = State() # ИНН/УНП
     q3 = State() # Сайт
