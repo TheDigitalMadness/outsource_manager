@@ -6,7 +6,6 @@ from aiogram.types.input_file import FSInputFile
 import ways.main_menu.results.config as cfg
 import ways.main_menu.config as main_menu_cfg
 from ways.main_menu.contacts import config as contacts_cfg
-import ways.main_menu.audit.config as audit_cfg
 import base_config.config as app_cfg
 
 from ways.main_menu.audit import router as audit_router
@@ -28,7 +27,6 @@ async def send_all_cases(callback: CallbackQuery, state: FSMContext):
 @router.callback_query(cfg.ResultsWay.choose_action, F.data == "audit")
 async def go_audit(callback: CallbackQuery, state: FSMContext):
     await audit_router.start_audit(callback, state)
-    await state.set_state(audit_cfg.AuditWay.choose_action)
 
 
 @router.callback_query(cfg.ResultsWay.choose_action, F.data == "contacts")
