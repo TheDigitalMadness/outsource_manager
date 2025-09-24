@@ -177,7 +177,7 @@ async def wizard_back(callback: CallbackQuery, state: FSMContext):
 
 @router.callback_query(
     StateFilter(
-            cfg.AuditWay.choose_action , cfg.AuditWay.q1 , cfg.AuditWay.q2 , cfg.AuditWay.q3 , cfg.AuditWay.q4 , cfg.AuditWay.q5 , cfg.AuditWay.q6 , cfg.AuditWay.q7 , cfg.AuditWay.q8
+            cfg.AuditWay.q1 , cfg.AuditWay.q2 , cfg.AuditWay.q3 , cfg.AuditWay.q4 , cfg.AuditWay.q5 , cfg.AuditWay.q6 , cfg.AuditWay.q7 , cfg.AuditWay.q8
     ),
     F.data == "contacts"
 )
