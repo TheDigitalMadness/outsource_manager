@@ -236,8 +236,6 @@ class AuditRequest:
             cur = conn.cursor()
             cur.execute("SELECT * FROM audit_requests WHERE tg_id = ? ORDER BY created_at DESC", (tg_id,))
             rows = cur.fetchall()
-            logger.info(rows)
-            logger.info("text0")
             return [cls.Object.from_list(r) for r in rows]
 
     @staticmethod
