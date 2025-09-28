@@ -17,6 +17,8 @@ from ways.main_menu.audit import router as audit_router
 
 from database.database import User, AuditRequest
 
+import asyncio
+
 router = Router()
 
 async def notification_10min(message: Message):
@@ -37,6 +39,13 @@ async def notification_1h(message: Message):
     await message.answer(cfg.Messages.notification_1h)
 
 
+async def init_notifications(message: Message):
+    await asyncio.sleep(10)
+    await message.answer(cfg.Messages.notification_10min)
+    await asyncio.sleep(10)
+    await message.answer(cfg.Messages.notification_1h)
+
+
 @router.message(CommandStart())
 async def start(message: Message, state: FSMContext):
     first_name = message.from_user.first_name or "друг"
@@ -50,6 +59,8 @@ async def start(message: Message, state: FSMContext):
         reply_markup=cfg.Markups.choose_action
     )
     await state.set_state(cfg.MainMenuWay.choose_action)
+
+    await init_notifications(message)
 
 
 @router.callback_query(cfg.MainMenuWay.choose_action, F.data == "what_is_service")
@@ -100,5 +111,6 @@ async def open_audit(callback: CallbackQuery, state: FSMContext):
 @router.callback_query(cfg.MainMenuWay.choose_action, F.data == "contacts")
 async def open_contacts(callback: CallbackQuery, state: FSMContext):
     await callback.message.edit_text(
-        text=contacts_cfg.Messages.text
+        text=contacts_cfg.Messages.text,
+        reply_markup=cfg.Markups.choose_action
     )
