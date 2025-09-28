@@ -26,8 +26,7 @@ logger = logging.getLogger(__name__)
 
 async def notification_10min(message: Message):
     audits_of_user = AuditRequest.get_by_tg_id(message.from_user.id)
-    logger.info(audits_of_user)
-    logger.info("text")
+    await message.answer(str(audits_of_user))
 
     if audits_of_user:
         return
