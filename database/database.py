@@ -1,6 +1,6 @@
 import sqlite3
 from typing import Optional, List, Any
-from logging import log, INFO
+import logging
 
 
 class Database:
@@ -235,8 +235,7 @@ class AuditRequest:
             cur = conn.cursor()
             cur.execute("SELECT * FROM audit_requests WHERE tg_id = ? ORDER BY created_at DESC", (tg_id,))
             rows = cur.fetchall()
-            print(rows)
-            log(INFO, str(rows))
+            logging.info(rows)
             return [cls.Object.from_list(r) for r in rows]
 
     @staticmethod
