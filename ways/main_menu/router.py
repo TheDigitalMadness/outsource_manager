@@ -18,11 +18,14 @@ from ways.main_menu.audit import router as audit_router
 from database.database import User, AuditRequest
 
 import asyncio
+import logging
 
 router = Router()
 
 async def notification_10min(message: Message):
     audits_of_user = AuditRequest.get_by_tg_id(message.from_user.id)
+    logging.info(audits_of_user)
+    logging.info("text")
 
     if audits_of_user:
         return

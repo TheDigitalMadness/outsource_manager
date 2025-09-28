@@ -236,6 +236,7 @@ class AuditRequest:
             cur.execute("SELECT * FROM audit_requests WHERE tg_id = ? ORDER BY created_at DESC", (tg_id,))
             rows = cur.fetchall()
             logging.info(rows)
+            logging.info("text0")
             return [cls.Object.from_list(r) for r in rows]
 
     @staticmethod
