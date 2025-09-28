@@ -43,9 +43,9 @@ async def notification_1h(message: Message):
 
 
 async def init_notifications(message: Message):
-    await asyncio.sleep(10)
+    await asyncio.sleep(10 * 60)
     await notification_10min(message)
-    await asyncio.sleep(10)
+    await asyncio.sleep((1 * 60 * 60) - (10 * 60))
     await notification_1h(message)
 
 

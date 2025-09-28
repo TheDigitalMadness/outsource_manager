@@ -94,15 +94,18 @@ async def a_q8(message: Message, state: FSMContext):
     answers["q8"] = message.text
     await state.update_data(audit_answers=answers)
 
-    # Отправка итоговых сообщений
-    await message.answer(cfg.Messages.done)
 
-    # Возврат кнопок стартового меню
+
+    # Возврат кнопок стартового меню и отправка итоговых сообщений
     import ways.main_menu.config as mm_cfg
     await message.answer(
-        text=mm_cfg.Messages.greeting(message.from_user.first_name or "друг"),
-        reply_markup=mm_cfg.Markups.choose_action
+        text=cfg.Messages.done,
+        reply_markup=mm_cfg.Markups.choose_action,
     )
+    # await message.answer(
+    #     text=mm_cfg.Messages.greeting(message.from_user.first_name or "друг"),
+    #     reply_markup=mm_cfg.Markups.choose_action
+    # )
     await state.set_state(mm_cfg.MainMenuWay.choose_action)
 
     # Рассылка заявки всем администраторам
