@@ -2,6 +2,7 @@ import sqlite3
 from typing import Optional, List, Any
 import logging
 
+logger = logging.getLogger(__name__)
 
 class Database:
     # Путь к файлу базы — можно переопределить в bot.py перед init_db()
@@ -235,8 +236,8 @@ class AuditRequest:
             cur = conn.cursor()
             cur.execute("SELECT * FROM audit_requests WHERE tg_id = ? ORDER BY created_at DESC", (tg_id,))
             rows = cur.fetchall()
-            logging.info(rows)
-            logging.info("text0")
+            logger.info(rows)
+            logger.info("text0")
             return [cls.Object.from_list(r) for r in rows]
 
     @staticmethod
