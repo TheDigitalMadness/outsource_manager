@@ -1,8 +1,9 @@
 from aiogram import Router, F
 from aiogram.filters import CommandStart
-from aiogram.types import Message, CallbackQuery
+from aiogram.types import Message, CallbackQuery, FSInputFile
 from aiogram.fsm.context import FSMContext
 
+import base_config.config as app_cfg
 import ways.main_menu.config as cfg
 
 from ways.main_menu.contacts import config as contacts_cfg
@@ -14,9 +15,26 @@ from ways.main_menu.audit import config as audit_cfg
 
 from ways.main_menu.audit import router as audit_router
 
-from database.database import User
+from database.database import User, AuditRequest
 
 router = Router()
+
+async def notification_10min(message: Message):
+    audits_of_user = AuditRequest.get_by_tg_id(message.from_user.id)
+
+    if audits_of_user:
+        return
+
+    await message.answer(cfg.Messages.notification_10min)
+
+
+async def notification_1h(message: Message):
+    audits_of_user = AuditRequest.get_by_tg_id(message.from_user.id)
+
+    if audits_of_user:
+        return
+
+    await message.answer(cfg.Messages.notification_1h)
 
 
 @router.message(CommandStart())
@@ -58,6 +76,11 @@ async def open_results(callback: CallbackQuery, state: FSMContext):
         text=results_cfg.Messages.results,
         reply_markup=results_cfg.Markups.choose_action
     )
+    await callback.message.answer_document(document=FSInputFile(app_cfg.Files.CASES_PDFS[0]))
+    await callback.message.answer_document(document=FSInputFile(app_cfg.Files.CASES_PDFS[1]))
+    await callback.message.answer_document(document=FSInputFile(app_cfg.Files.CASES_PDFS[2]))
+    await callback.message.answer_document(document=FSInputFile(app_cfg.Files.CASES_PDFS[3]))
+    await callback.message.answer_document(document=FSInputFile(app_cfg.Files.CASES_PDFS[4]))
     await state.set_state(results_cfg.ResultsWay.choose_action)
 
 
@@ -73,12 +96,9 @@ async def open_prices(callback: CallbackQuery, state: FSMContext):
 @router.callback_query(cfg.MainMenuWay.choose_action, F.data == "audit")
 async def open_audit(callback: CallbackQuery, state: FSMContext):
     await audit_router.start_audit(callback, state)
-    await state.set_state(audit_cfg.AuditWay.choose_action)
 
 @router.callback_query(cfg.MainMenuWay.choose_action, F.data == "contacts")
 async def open_contacts(callback: CallbackQuery, state: FSMContext):
     await callback.message.edit_text(
-        text=contacts_cfg.Messages.text,
-        reply_markup=contacts_cfg.Markups.choose_action
+        text=contacts_cfg.Messages.text
     )
-    await state.set_state(contacts_cfg.ContactsWay.choose_action)

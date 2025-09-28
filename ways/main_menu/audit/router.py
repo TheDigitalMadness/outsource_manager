@@ -8,7 +8,7 @@ from datetime import datetime, timezone, timedelta
 import ways.main_menu.audit.config as cfg
 import ways.main_menu.config as main_menu_cfg
 from ways.main_menu.contacts import config as contacts_cfg
-from database.database import User
+from database.database import User, AuditRequest
 
 from base_config.config import TELEGRAM_BOT_TOKEN
 
@@ -119,18 +119,41 @@ async def notify_admins(message: Message, state: FSMContext):
     data = await state.get_data()
     answers = data.get("audit_answers", {})
 
+    q1 = answers.get('q1','')
+    q2 = answers.get('q2', '')
+    q3 = answers.get('q3', '')
+    q4 = answers.get('q4', '')
+    q5 = answers.get('q5', '')
+    q6 = answers.get('q6', '')
+    q7 = answers.get('q7', '')
+    q8 = answers.get('q8', '')
+
+    AuditRequest.create(
+        tg_id=message.from_user.id,
+        chat_id=message.chat.id,
+        username=username,
+        q1=q1,
+        q2=q2,
+        q3=q3,
+        q4=q4,
+        q5=q5,
+        q6=q6,
+        q7=q7,
+        q8=q8
+    )
+
     text = (
         "Новая заявка!\n"
         f"Пользователь: {username}\n"
         f"Время заполнения заявки: {msk_str}\n"
-        f"Название предприятия: {answers.get('q1','')}\n"
-        f"ИНН/УНП: {answers.get('q2','')}\n"
-        f"Сайт: {answers.get('q3','')}\n"
-        f"Особенности: {answers.get('q4','')}\n"
-        f"Запрос: {answers.get('q5','')}\n"
-        f"Возможности: {answers.get('q6','')}\n"
-        f"Телефон: {answers.get('q7','')}\n"
-        f"Когда связаться: {answers.get('q8','')}"
+        f"Название предприятия: {q1}\n"
+        f"ИНН/УНП: {q2}\n"
+        f"Сайт: {q3}\n"
+        f"Особенности: {q4}\n"
+        f"Запрос: {q5}\n"
+        f"Возможности: {q6}\n"
+        f"Телефон: {q7}\n"
+        f"Когда связаться: {q8}"
     )
 
     admins = [u for u in User.get_all_users() if u.admin]
