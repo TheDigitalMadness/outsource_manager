@@ -56,6 +56,8 @@ async def start(message: Message, state: FSMContext):
     # Создаём пользователя в БД при первом старте, если нужен учёт
     if not User.get_by_tg_id(message.from_user.id):
         User.create_if_not_exists(tg_id=message.from_user.id, full_name=message.from_user.full_name or "")
+    else:
+        User.update_fullname(tg_id=message.from_user.id, full_name=message.from_user.full_name or "")
 
     await message.answer(
         text=cfg.Messages.greeting(first_name),
